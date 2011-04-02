@@ -1,5 +1,7 @@
 Ch3SampleApp::Application.routes.draw do
    
+  get "users/new"
+
 #   match '/', :to => 'pages#home'
    match '/contact', :to => 'pages#contact'
    match '/about', :to => 'pages#about'

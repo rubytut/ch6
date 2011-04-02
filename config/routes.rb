@@ -2,6 +2,10 @@ Ch3SampleApp::Application.routes.draw do
    
   get "users/new"
 
+#  the "match '/signup'" gives us the named route signup_page,
+#  which we put to use in Listing 5.30
+   match '/signup', :to => 'users#new'
+
 #   match '/', :to => 'pages#home'
    match '/contact', :to => 'pages#contact'
    match '/about', :to => 'pages#about'

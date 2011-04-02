@@ -3,6 +3,9 @@
   <head>
     <title><%= title %></title>
     <%= csrf_meta_tag %>
+    <!-- render helpers are used to render partials
+    	on the page, partials are *.html.erb files
+	which names begin with '_'. -->
     <%= render 'layouts/stylesheets' %>
   </head>
   <body>
@@ -11,6 +14,7 @@
         <section class="round">
           <%= yield %>
         </section>
+	<%= render 'layouts/footer' %>
       <div>
   </body>
 </html>

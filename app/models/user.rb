@@ -21,8 +21,9 @@ class User < ActiveRecord::Base
                     :length => { :maximum => 50 }
   
   email_regexp = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, :presence => true,
-                    :format   => { :with =>email_regexp }
+  validates :email, :presence   => true,
+                    :format     => { :with =>email_regexp },
+		    :uniqueness => true
 
 
 

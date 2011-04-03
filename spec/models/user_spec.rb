@@ -21,4 +21,10 @@ describe User do
     # same as: no_name_user.valid?.should_not == true
     no_name_user.should_not be_valid
   end
+
+  # failing test for user without an email
+  it "should require an email address" do
+    no_email_user = User.new(@attr.merge(:email => ""))
+    no_email_user.should_not be_valid
+  end
 end

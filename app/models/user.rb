@@ -17,5 +17,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email
 
   # validate the attributes before accepting them
-  validates :name, :presence => true
+  validates :name,  :presence => true
+  validates :email, :presence => true
 end

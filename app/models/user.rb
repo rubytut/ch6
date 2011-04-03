@@ -54,6 +54,8 @@ class User < ActiveRecord::Base
     user = find_by_email(email)
     return nil if user.nil?
     return user if user.has_password?(submitted_password)
+    # Method implicitly handles password mismatch case, since in that case
+    # we reach the end of the method, which automatically returns nil.
   end
 
   private

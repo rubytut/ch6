@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   # Which attributes can be modified by outside users
   # (such as users submiting requests with web browsers)
-  attr_accessible :name, :email
+  attr_accessible :name, :email, :password, :password_confirmation
 
   # validate the attributes before accepting them
   validates :name,  :presence => true,

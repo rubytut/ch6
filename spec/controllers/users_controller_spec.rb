@@ -34,6 +34,7 @@ describe UsersController do
 
     it "should have a profile image" do
       get :show, :id => @user
+      # make sure that the img tag is inside the h1 tag.
       response.should have_selector("h1>img", :class => "gravatar")
     end
 

@@ -54,6 +54,11 @@ class User < ActiveRecord::Base
     def encrypt_password
       # 'new_record?' returns true if the object
       # has not yet been saved to the database.
+      #
+      # Since the salt is a unique identifier for each user,
+      # we don't want it to change every time the user is updated,
+      # and by including new_record? we ensure that the salt is 
+      # only created once, when the user is first created.
       self.salt = make_salt if new_record?
       self.encrypted_password = encrypt(password)
     end

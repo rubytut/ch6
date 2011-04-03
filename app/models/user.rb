@@ -19,8 +19,10 @@ class User < ActiveRecord::Base
   # validate the attributes before accepting them
   validates :name,  :presence => true,
                     :length => { :maximum => 50 }
-
-  validates :email, :presence => true
+  
+  email_regexp = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, :presence => true,
+                    :format   => { :with =>email_regexp }
 
 
 

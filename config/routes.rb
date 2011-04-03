@@ -1,6 +1,22 @@
 Ch3SampleApp::Application.routes.draw do
-   
-  get "users/new"
+  
+  # Our method for displaying the user show page will follow 
+  # the conventions of the REST architecture.
+  # The REST design style emphasizes representing data as
+  # resources that can be created, shown, updated, or destroyed.
+  #
+  # When following REST principles, resources are typically refereced
+  # using teh resource name and a unique identifier. What that
+  # means in the context of users - which we're now thinking of as
+  # a Users resource - is that we should view the user id 1 by issuing
+  # a GET requert to the URL '/users/1'.
+  resources :users
+
+  # We remove the following line because the one additional resource line 
+  # doesen't just add a working '/users/1' URL; it endows our sample 
+  # application with all the action needed for a RESTful User resource,
+  # along wit a large number of named routes for generating user URLs.
+  ##get "users/new"
 
 #  the "match '/signup'" gives us the named route signup_page,
 #  which we put to use in Listing 5.30

@@ -95,7 +95,21 @@ describe User do
       User.new(hash).should_not be_valid
     end
 
-  end # describe
+  end # describe 'password validations'
+
+  describe "password encryption" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    it "should have an encrypted password attribute" do
+      # respond_to will retrun true only if the Class 
+      # has a 'encrypted_password' attribute.
+      @user.should respond_to(:encrypted_password)
+    end
+  end # descripe 'password encryption'
+
 
 end
 

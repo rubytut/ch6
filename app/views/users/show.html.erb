@@ -1,15 +1,15 @@
 <table class="profile" summary="Profile information">
-  <tr>
-    <td>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </td>
-    <td class="sidebar round">
-      <!-- user_path(@user) returns '/users/1' in case of 1st user -->
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong> <%= link_to user_path(@user), @user %>
-    </td>
-  </tr>
+	<tr>
+		<td>
+			<h1>
+				<%= gravatar_for @user %>
+				<%= @user.name %>
+			</h1>
+		</td>
+		<td class="sidebar round">
+			<!-- user_path(@user) returns '/users/1' in case of 1st user -->
+			<strong>Name</strong> <%= @user.name %><br />
+			<strong>URL</strong> <%= link_to user_path(@user), @user %>
+		</td>
+	</tr>
 </table>

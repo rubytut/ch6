@@ -3,4 +3,8 @@ class SessionsController < ApplicationController
     @title = "Sign in"
   end
 
+  def create
+    render 'new'
+  end
+
 end

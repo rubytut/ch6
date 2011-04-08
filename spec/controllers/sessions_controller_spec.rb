@@ -21,7 +21,7 @@ describe SessionsController do
     describe "invalid signin" do
 
       before(:each) do
-        @attr = { :email => "email@example.com", :password = "invalid" }
+        @attr = { :email => "email@example.com", :password => "invalid" }
       end
 
       it "should re-render the new page" do

@@ -1,5 +1,7 @@
 Ch3SampleApp::Application.routes.draw do
   
+  get "sessions/new"
+
   # Our method for displaying the user show page will follow 
   # the conventions of the REST architecture.
   # The REST design style emphasizes representing data as

@@ -58,6 +58,11 @@ class User < ActiveRecord::Base
     # we reach the end of the method, which automatically returns nil.
   end
 
+  def self.authenticate_with_salt(id, cookie_salt)
+    user = find_by_id(id)
+    (user && user.salt == cookie_salt) ? user : nil
+  end
+
   private
     def encrypt_password
       # 'new_record?' returns true if the object

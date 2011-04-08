@@ -13,6 +13,7 @@ Ch3SampleApp::Application.routes.draw do
   # a Users resource - is that we should view the user id 1 by issuing
   # a GET requert to the URL '/users/1'.
   resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
 
   # We remove the following line because the one additional resource line 
   # doesen't just add a working '/users/1' URL; it endows our sample 
@@ -23,6 +24,9 @@ Ch3SampleApp::Application.routes.draw do
 #  the "match '/signup'" gives us the named route signup_page,
 #  which we put to use in Listing 5.30
    match '/signup', :to => 'users#new'
+
+   match '/signin', :to => 'sessions#new'
+   match '/signout', :to => 'sessions#destroy'
 
 #   match '/', :to => 'pages#home'
    match '/contact', :to => 'pages#contact'

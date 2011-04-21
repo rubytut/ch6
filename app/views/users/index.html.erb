@@ -3,14 +3,12 @@
 <%= will_paginate %>
 
 <ul class="users">
-	<!---<% @users.each do |user| %> -->
 		<!-- Here we call render not on a string with teh name
 		of a partial, but rather on a user variable of class User;
 		in this context, Rails automatically looks for a partial called 
 		_user.html.erb, which we must create -->
 		
 		<%= render @users %>
-		<!---<% end %>-->
 </ul>
 
 <%= will_paginate %>

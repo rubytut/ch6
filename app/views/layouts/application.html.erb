@@ -7,6 +7,11 @@
 		on the page, partials are *.html.erb files
 		which names begin with '_'. -->
 		<%= render 'layouts/stylesheets' %>
+		<!-- Web browsers can't send DELETE requests natively,
+		so Rails fakes them with JavaScript. To get the delete
+		links to work, we therefore have to include the default 
+		Rails JavaScript libraries -->
+		<%= javascript_include_tag :defaults %>
 	</head>
 	<body>
 		<div class="container">

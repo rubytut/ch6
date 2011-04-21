@@ -11,6 +11,11 @@ class UsersController < ApplicationController
     @title = "Sign up"
   end
 
+  def index
+    @title = "All users"
+    @users = User.all
+  end
+
   def show
     # 'params' is a standart Rails object to retrive the user id.
     # When we make the appropriate request to the Users controller, 

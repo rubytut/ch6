@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   # so here we restrict the filter to act only on the
   # :edit and :update actions by passing the :only options hash.
 
+  before_filter :correct_user, :only => [:edit, :update]
+
   def new
     @user = User.new
     @title = "Sign up"

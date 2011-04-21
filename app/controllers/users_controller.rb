@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:edit, :update, :index]
   # By default, before filters apply to every action in a controller,
   # so here we restrict the filter to act only on the
   # :edit and :update actions by passing the :only options hash.

@@ -193,6 +193,8 @@ describe UsersController do
 
       it "should change the user's attributes" do
         put :update, :id => @user, :user => @attr
+        # reload method reloads the @user variable from the (test)
+        # database using @user.reload.
         @user.reload
         @user.name.should == @attr[:name]
         @user.email.should == @attr[:email]

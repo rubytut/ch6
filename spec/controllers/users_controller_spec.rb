@@ -311,6 +311,7 @@ describe UsersController do
     end
 
     describe "as an admin user" do
+      admin = nil
 
       before(:each) do
         admin = Factory(:user, :email => "admin@example.com", :admin => true)
@@ -326,6 +327,12 @@ describe UsersController do
       it "should redirect to the users page" do
         delete :destroy, :id => @user
         response.should redirect_to(users_path)
+      end
+
+      it "should not be able to destroy himself" do
+        lambda do
+          delete :destroy, :id => admin.id
+        end.should_not change(User, :count)
       end
     end
   end # describe DELETE destroy

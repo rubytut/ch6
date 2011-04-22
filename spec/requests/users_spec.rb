@@ -71,5 +71,4 @@ describe "Users" do
       end
     end
   end # describe sign in/out
-
 end # Users

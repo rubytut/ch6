@@ -157,6 +157,21 @@ describe UsersController do
         end
       end
     end
+
+    describe "delete link" do
+      it "should be visible for admin users" do
+        admin = test_sign_in(Factory(:user, :admin => true))
+        get :index
+        response.should have_selector("a", :content => "delete")
+      end
+ 
+      it "should not be visible for non-admin users" do
+        user = test_sign_in(Factory(:user))
+        get :index
+        response.should_not have_selector("a", :content => "delete")
+      end
+    end
+
   end # GET index
 
   describe "POST 'create'" do

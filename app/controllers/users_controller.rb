@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    if signed_in? 
+      redirect_to root_path
+    end
     @title = "Sign up"
   end
 
@@ -29,7 +32,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if signed_in?
+      redirect_to root_path
+    elsif @user.save
       # handle a succesful save
       sign_in @user
       flash[:success] = "Welcome to the Sample App!"

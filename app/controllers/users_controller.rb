@@ -81,9 +81,9 @@ class UsersController < ApplicationController
 
   private
 
-  def authenticate
-    deny_access unless signed_in?
-  end
+#  def authenticate
+#    deny_access unless signed_in?
+#  end
 
   def correct_user
     @user = User.find(params[:id])

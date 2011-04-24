@@ -14,6 +14,7 @@ Ch3SampleApp::Application.routes.draw do
   # a GET requert to the URL '/users/1'.
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :microposts, :only => [:create, :destroy]
 
   # We remove the following line because the one additional resource line 
   # doesen't just add a working '/users/1' URL; it endows our sample 

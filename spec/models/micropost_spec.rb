@@ -7,7 +7,10 @@ describe Micropost do
   end
 
   it "should create a new instance given valid attributes" do
-    Micropost.create!(@attr)
+    #Micropost.create!(@attr)
+    # The next line uses association User<->Micropost, so the
+    # user_id in microposts are updated automatically.
+    @user.microposts.create!(@attr)
   end
 
   describe "user associations" do

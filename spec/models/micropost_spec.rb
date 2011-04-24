@@ -13,6 +13,11 @@ describe Micropost do
   describe "user associations" do
 
     before(:each) do
+      # This pattern is the canonical way to create a micropost through
+      # its association with users. ( We user factory user because these
+      # tests are for the Micropost model, not the User model.) 
+      # When created this way, the micropost object automatically has its 
+      # user_id set to the right value, which fixes issue of mass-assigment.
       @micropost = @user.microposts.create(@attr)
     end
 

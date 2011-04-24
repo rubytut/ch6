@@ -213,7 +213,13 @@ table.microposts tr {
 table.microposts tr td.gravatar {
   border-top: 1px solid #ccc;
   vertical-align: top;
-  width: 50%;
+  width: 50px;
+}
+
+table.microposts tr td.micropost {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
 }
 
 table.micropost tr td.micropost span.timestamp {

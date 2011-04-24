@@ -12,7 +12,7 @@ describe MicropostsController do
     describe "failure" do
 
       before(:each) do
-        @attr = { :content => "")
+        @attr = { :content => "" }
       end
 
       it "should not create a micropost" do
@@ -49,7 +49,6 @@ describe MicropostsController do
         flash[:success].should =~ /micropost created/i
       end
     end # success
-
   end # POST create
 
 
@@ -66,6 +65,6 @@ describe MicropostsController do
       delete :destroy, :id => 1
       response.should redirect_to(singin_path)
     end
-  end
+  end # access control
 
 end

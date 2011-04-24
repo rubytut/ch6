@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     # params[:id] will be the user id 1, so the effect is the same
     # as the find command: 'User.find(1)'.
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(:page => params[:page])
     @title = @user.name
   end
 

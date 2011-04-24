@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
 
   # association with Micropost model
-  has_many :microposts
+  has_many :microposts, :dependent => :destroy
 
   # validate the attributes before accepting them
   validates :name,  :presence => true,

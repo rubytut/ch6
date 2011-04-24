@@ -6,4 +6,6 @@ class Micropost < ActiveRecord::Base
   # attribute that needs to be editable through the web, namely,
   # to content attribute.
   attr_accessible :content
+
+  belongs_to :user
 end

@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   # (such as users submiting requests with web browsers)
   attr_accessible :name, :email, :password, :password_confirmation
 
+  # association with Micropost model
+  has_many :microposts
+
   # validate the attributes before accepting them
   validates :name,  :presence => true,
                     :length => { :maximum => 50 }

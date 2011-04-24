@@ -31,4 +31,20 @@ describe Micropost do
     end
   end # describe user associations
 
+  describe "validations" do
+    it "should require a user id" do
+      Micropost.new(@attr).should_not be_valid
+    end
+
+    it "should require nonblank content" do
+      # .build is essentially equivalent to Micropost.new, except that it
+      # automatically sets the micropost's user_id to @user.id
+      @user.microposts.build(:content => "  ").should_not be_valid
+    end
+
+    it "should reject long content" do
+      @user.microposts.build(:content => "a" * 141).should_not be_valid
+    end
+
+
 end

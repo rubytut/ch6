@@ -169,11 +169,24 @@ describe User do
 
     before(:each) do
       @user = User.create(@attr)
+
+      # Here we indicate that the second post was created recently, 1.hour.ago,
+      # with the first post created 1.day.ago. Note how convenient the user of
+      # Factory Girl is: not only can we assign the user using mass assignment
+      # (since factories bypass attr_accessible), we can also set created_at
+      # manually, which Active Recort won't allow us to do.
+      @mp1 = Factory(:micropost, :user => @user, :created_at => 1.day.ago)
+      @mp2 = Factory(:micropost, :user => @user, :created_at => 1.hour.ago)
     end
 
     it "should have a microposts attribute" do
       @user.should respond_to(:microposts)
     end
+
+    it "should have the right microposts in the right order" do
+      @user.microposts.should == [@mp2, @mp1]
+    end
+
   end # describe micropost associations
 
 

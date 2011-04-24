@@ -8,4 +8,8 @@ class Micropost < ActiveRecord::Base
   attr_accessible :content
 
   belongs_to :user
+
+  # To get the ordering test to pass, we user a Rails facility called 
+  # default_scope with an :order parameter.
+  default_scope :order => 'microposts.created_at DESC'
 end

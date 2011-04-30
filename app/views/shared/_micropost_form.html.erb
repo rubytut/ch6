@@ -1,7 +1,23 @@
-<%= form_for @micropost do |f| %>
+<script language="JavaScript">
+	function textCounter(field,cntfield,maxlimit){
+		if(field.value.length > maxlimit) // if too long... trim it!
+		  field.value = field.value.substring(0, maxlimit);
+		else
+		  cntfield.value = maxlimit - field.value.length;
+	}
+</script>
+
+<%= form_for @micropost, :html => { :name => "mp_form" } do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
 	<div class="field">
-		<%= f.text_area :content %>
+		<%= f.text_area :content,
+		:onkeydown => "textCounter(document.mp_form.micropost[content], 
+			document.mp_form.micropost[remLen], 140)",
+		:onkeyup => "textCounter(document.mp_form.micropost[content],
+			document.mp_form.micropost[remLen], 140)"%>
+	</div>
+	<div class="field">
+		<%= f.text_field :remLen, :value => "140" %>
 	</div>
 	<div class="actions">
 		<%= f.submit "Submit" %>

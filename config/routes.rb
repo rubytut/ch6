@@ -18,8 +18,9 @@ Ch3SampleApp::Application.routes.draw do
       get :following, :followers
     end
   end
-  resources :sessions, :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :destroy]
+  resources :sessions,      :only => [:new, :create, :destroy]
+  resources :microposts,    :only => [:create, :destroy]
+  resources :relationships, :only => [:create, :destroy]
 
   # We remove the following line because the one additional resource line 
   # doesen't just add a working '/users/1' URL; it endows our sample 

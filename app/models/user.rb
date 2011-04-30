@@ -24,8 +24,21 @@ class User < ActiveRecord::Base
   # (such as users submiting requests with web browsers)
   attr_accessible :name, :email, :password, :password_confirmation
 
-  # association with Micropost model
+  # association with Micropost and Relationship model...
+  # Because the microposts table has a user_id attribute to 
+  # identify the user. An id used in this manner to connect
+  # two database tables is known as a foreign key, and when
+  # the foreign key for a User model object is user_id,
+  # Rails can infer the association automatically: by default,
+  # Rails expacts a foreign key of the form <class>_id, where
+  # <class> is the lower-cas version of the class name. In the
+  # present case, although we are still dealing with users,
+  # they are now identified with the foreign key follower_id,
+  # so we have to tell that to Rails as shown below.
   has_many :microposts, :dependent => :destroy
+  has_many :relationships, :foreign_key => "follower_id",
+                            :dependent => :destroy
+
 
   # validate the attributes before accepting them
   validates :name,  :presence => true,

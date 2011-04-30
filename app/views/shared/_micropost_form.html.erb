@@ -7,14 +7,14 @@
 	}
 </script>
 
-<%= form_for @micropost, :html => { :name => "mp_form" } do |f| %>
+<%= form_for @micropost  do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
 	<div class="field">
 		<%= f.text_area :content,
-		:onkeydown => "textCounter(document.mp_form.micropost[content], 
-			document.mp_form.micropost[remLen], 140)",
-		:onkeyup => "textCounter(document.mp_form.micropost[content],
-			document.mp_form.micropost[remLen], 140)"%>
+		:onkeydown => "textCounter(document.new_micropost.micropost_content, 
+			document.new_micropost.micropost_remLen, 140)",
+		:onkeyup => "textCounter(document.new_micropost.micropost_content,
+			document.new_micropost.micropost_remLen, 140)"%>
 	</div>
 	<div class="field">
 		<%= f.text_field :remLen, :value => "140" %>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update, :index, :destroy]
+  before_filter :authenticate, :except => [:show, :new, :create]
+##  before_filter :authenticate, :only => [:edit, :update, :index, :destroy]
   # By default, before filters apply to every action in a controller,
   # so here we restrict the filter to act only on the
   # :edit and :update actions by passing the :only options hash.
@@ -78,6 +79,20 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(:page => params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(:page => params[:page])
+    render 'show_follow'
+  end
 
   private
 

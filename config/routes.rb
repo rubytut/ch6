@@ -14,6 +14,7 @@ Ch3SampleApp::Application.routes.draw do
   # a GET requert to the URL '/users/1'.
   resources :users do
     member do
+      # GET /users/1/following || /users/1/followers
       get :following, :followers
     end
   end

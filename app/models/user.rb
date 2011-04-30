@@ -36,9 +36,17 @@ class User < ActiveRecord::Base
   # they are now identified with the foreign key follower_id,
   # so we have to tell that to Rails as shown below.
   has_many :microposts, :dependent => :destroy
+
   has_many :relationships, :foreign_key => "follower_id",
                             :dependent => :destroy
+
+  has_many :reverse_relationships, :foreign_key => "followed_id",
+                                    :class_name => "Relationship",
+                                    :dependent => :destroy
+
   has_many :following, :through => :relationships, :source => :followed
+
+  has_many :followers, :through => :reverse_relationships, :source => :follower
 
 
   # validate the attributes before accepting them

@@ -80,6 +80,14 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
 
+  def following?(followed)
+    relationships.find_by_followed_id(followed)
+  end
+
+  def follow!(followed)
+    relationships.create!(:followed_id => followed.id)
+  end
+
   def feed
     # This is preliminary. See Chapter 12 for the full implementation.
     Micropost.where("user_id = ?", id)

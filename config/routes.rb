@@ -12,7 +12,11 @@ Ch3SampleApp::Application.routes.draw do
   # means in the context of users - which we're now thinking of as
   # a Users resource - is that we should view the user id 1 by issuing
   # a GET requert to the URL '/users/1'.
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
 

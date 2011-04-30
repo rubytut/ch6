@@ -88,6 +88,10 @@ class User < ActiveRecord::Base
     relationships.create!(:followed_id => followed.id)
   end
 
+  def unfollow!(followed)
+    relationships.find_by_followed_id(followed).destroy
+  end
+
   def feed
     # This is preliminary. See Chapter 12 for the full implementation.
     Micropost.where("user_id = ?", id)
